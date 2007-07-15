@@ -1,5 +1,5 @@
-#
 Summary:	OpenMoko contacts applet
+Summary(pl.UTF-8):	Aplet kontaktów dla OpenMoko
 Name:		openmoko-contacts
 Version:	0.0.0.2360
 Release:	1
@@ -14,13 +14,15 @@ BuildRequires:	gtk+2-devel >= 2:2.10.7
 BuildRequires:	intltool
 BuildRequires:	libmatchbox-devel >= 1.8
 BuildRequires:	openmoko-libs-devel
+Requires(post,preun):	GConf2
 Requires:	openmoko-icons
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define openmokoname %(echo %{name} | sed -e 's/openmoko-//')
-
 %description
-OpenMoko contacts applet
+OpenMoko contacts applet.
+
+%description -l pl.UTF-8
+Aplet kontaktów dla OpenMoko.
 
 %prep
 %setup -q
@@ -41,8 +43,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-#%find_lang Calculator
 
 %clean
 rm -rf $RPM_BUILD_ROOT
